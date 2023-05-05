@@ -642,8 +642,10 @@ class LunarLander(gym.Env, EzPickle):
             20.0 * self.lander.angularVelocity / FPS,
             1.0 if self.legs[0].ground_contact else 0.0,
             1.0 if self.legs[1].ground_contact else 0.0,
+            1.0 if self.game_over else 0.0, #adjusted  
+            0.0 if self.lander.awake else 1.0 # adjusted
         ]
-        assert len(state) == 8
+        assert len(state) == 10 #from 8 to 10
 
         reward = 0
         shaping = (
