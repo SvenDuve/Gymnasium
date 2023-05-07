@@ -297,6 +297,8 @@ class LunarLander(gym.Env, EzPickle):
                 -5.0,
                 -0.0,
                 -0.0,
+                -0.0,
+                -0.0,
             ]
         ).astype(np.float32)
         high = np.array(
@@ -311,6 +313,8 @@ class LunarLander(gym.Env, EzPickle):
                 5.0,
                 math.pi,
                 5.0,
+                1.0,
+                1.0,
                 1.0,
                 1.0,
             ]
