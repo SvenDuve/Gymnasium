@@ -329,6 +329,7 @@ class LunarLander(gym.Env, EzPickle):
             self.action_space = spaces.Discrete(4)
 
         self.render_mode = render_mode
+        print("LunarLander-v2 environment created")
 
     def _destroy(self):
         if not self.moon:
