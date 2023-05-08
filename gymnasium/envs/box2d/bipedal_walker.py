@@ -581,6 +581,12 @@ class BipedalWalker(gym.Env, EzPickle):
             1.0 if self.legs[3].ground_contact else 0.0,
         ]
         state += [l.fraction for l in self.lidar]
+
+        print(state)
+        print(self.hull.position)
+        print(pos[0])
+        print(pos[1])
+
         state += [pos[0]] # add hullposiiton 1
         state += [pos[1]] # added hullposition 2
 
