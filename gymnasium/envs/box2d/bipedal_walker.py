@@ -215,6 +215,7 @@ class BipedalWalker(gym.Env, EzPickle):
             + [-1.0] * 10
             + [-math.inf]
             + [-math.inf]
+            + [-0.0]
         ).astype(np.float32)
         high = np.array(
             [
@@ -236,6 +237,7 @@ class BipedalWalker(gym.Env, EzPickle):
             + [1.0] * 10
             + [-math.inf]
             + [-math.inf]
+            + [1.0]
         ).astype(np.float32)
         self.action_space = spaces.Box(
             np.array([-1, -1, -1, -1]).astype(np.float32),
