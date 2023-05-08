@@ -211,10 +211,10 @@ class BipedalWalker(gym.Env, EzPickle):
                 -math.pi,
                 -5.0,
                 -0.0,
-                -math.inf,
-                -math.inf,
             ]
             + [-1.0] * 10
+            + [-math.inf]
+            + [-math.inf]
         ).astype(np.float32)
         high = np.array(
             [
@@ -232,10 +232,10 @@ class BipedalWalker(gym.Env, EzPickle):
                 math.pi,
                 5.0,
                 5.0,
-                math.inf,
-                math.inf
             ]
             + [1.0] * 10
+            + [-math.inf]
+            + [-math.inf]
         ).astype(np.float32)
         self.action_space = spaces.Box(
             np.array([-1, -1, -1, -1]).astype(np.float32),
@@ -579,12 +579,12 @@ class BipedalWalker(gym.Env, EzPickle):
             self.joints[3].angle + 1.0,
             self.joints[3].speed / SPEED_KNEE,
             1.0 if self.legs[3].ground_contact else 0.0,
-            pos[0], # add hullposiiton 1
-            pos[1], # added hullposition 2
         ]
         state += [l.fraction for l in self.lidar]
-        assert len(state) == 24
+        state += [pos[0]] # add hullposiiton 1
+        state += [pos[1]] # added hullposition 2
 
+        assert len(state) == 26
         self.scroll = pos.x - VIEWPORT_W / SCALE / 5
 
         shaping = (
