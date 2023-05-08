@@ -583,8 +583,9 @@ class BipedalWalker(gym.Env, EzPickle):
         state += [l.fraction for l in self.lidar]
         state += [pos[0]] # add hullposiiton 1
         state += [pos[1]] # added hullposition 2
+        state += [1.0 if self.game_over else 0.0]
 
-        assert len(state) == 26
+        assert len(state) == 27
         self.scroll = pos.x - VIEWPORT_W / SCALE / 5
 
         shaping = (
