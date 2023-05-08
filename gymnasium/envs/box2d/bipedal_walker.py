@@ -211,6 +211,8 @@ class BipedalWalker(gym.Env, EzPickle):
                 -math.pi,
                 -5.0,
                 -0.0,
+                -math.inf,
+                -math.inf,
             ]
             + [-1.0] * 10
         ).astype(np.float32)
@@ -230,6 +232,8 @@ class BipedalWalker(gym.Env, EzPickle):
                 math.pi,
                 5.0,
                 5.0,
+                math.inf,
+                math.inf
             ]
             + [1.0] * 10
         ).astype(np.float32)
@@ -575,6 +579,8 @@ class BipedalWalker(gym.Env, EzPickle):
             self.joints[3].angle + 1.0,
             self.joints[3].speed / SPEED_KNEE,
             1.0 if self.legs[3].ground_contact else 0.0,
+            pos[0], # add hullposiiton 1
+            pos[1], # added hullposition 2
         ]
         state += [l.fraction for l in self.lidar]
         assert len(state) == 24
